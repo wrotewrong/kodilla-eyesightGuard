@@ -10,16 +10,10 @@ const App = () => {
   const [timer, setTimer] = useState(null);
 
   const formatTime = (time) => {
-    let minutes = Math.floor(time / 60);
-    let seconds = time % 60;
+    let minutes = String(Math.floor(time / 60));
+    let seconds = String(time % 60);
 
-    if (minutes < 10) {
-      minutes = '0' + minutes;
-    }
-    if (seconds < 10) {
-      seconds = '0' + seconds;
-    }
-    return `${minutes}:${seconds}`;
+    return `${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
   };
 
   const memoizedTime = useMemo(() => formatTime(time, [time]));
